@@ -1,16 +1,13 @@
 # 2026-07-31 File Manager dialog blocker
 
-Classification: Unknown workflow result.
+Classification: Resolved for the approved Home testbed probe.
 
-The Home template now references the reusable imported `body` container, but
-the paired container file has not been confirmed in the File Manager. The
-File Manager's `new file` control opens a browser-native filename prompt. The
-browser bridge can detect the prompt, but accepting the filename blocks the
-page readback and does not expose a confirmed directory result. No claim is
-made that the file was created.
+The earlier browser-native filename prompt blocked immediate readback. A later
+owner-approved browser session accepted the filename and the File Manager
+showed the paired JSON and generated Velocity entries. The Home editor then
+loaded without a missing-body error. This confirms artifact presence for this
+testbed, not byte content or compiler causality.
 
-The safe recovery is to leave the File Manager prompt visible for an owner or
-interactive browser session, enter `body.cjson`, and verify that both the JSON
-file and generated Velocity file appear before reloading Home. No FTP, API,
-source-file, credential, or additional storefront mutation was used to bypass
-the prompt.
+No FTP, API, credential, or raw source capture was used. The remaining proof
+gates are direct CJSON/Velocity diff review and an isolated public marker if a
+future work order requires them.
