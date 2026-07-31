@@ -44,15 +44,15 @@ recorded instead of inferring it.
 
 ## Open gates
 
-- Inspect the current collection editor hierarchy and dirty state before any
-  reload.
-- Decide whether to retain or roll back the Header Section structural probe.
-- Map another Section palette category, then record only the confirmed direct-child choices. Use hierarchy `add > Add Child` when canvas controls are unavailable.
-- Complete the collection-probe rollback.
-- Capture and verify rollback CJSON and VM.
-- Verify the exact two-Tab order and probe marker absence.
-- Recheck collection data-bound controls after rollback.
-- Test dynamic header actions.
-- Test product purchase, Notify Me, and out-of-stock states.
-- Complete mobile and tablet acceptance.
-- Reconstruct and verify the footer.
+- Create the reusable imported `body` container and its paired generated
+  artifact through the File Manager. The browser-native filename prompt has
+  repeatedly blocked readback, so creation is not yet Verified.
+- Update the Home template testbed only after the `body` artifact is visible.
+- Insert the Body widget as a direct child of imported `body`, then save and
+  reload the editor.
+- Prove imported-container reuse on a second explicitly composed route.
+- Run save/reload and public-render probes for material layout settings.
+- Prove Item Container and Page Container record scope with controlled
+  mutations. Current route evidence is palette-only.
+- Complete the incoming UltraCart source-file provenance and privacy review
+  before adding any supplied files to the public repository.
