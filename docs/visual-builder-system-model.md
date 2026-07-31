@@ -10,9 +10,10 @@ composition, and public-route readback. It is not a universal UltraCart
 specification.
 
 The observed editor loaded Visual Builder compiler 0.1.0 with 532 widget
-implementations. Treat widget types, settings, compiler output, runtime names,
-and internal editor objects as version-specific until the incoming UltraCart
-files establish a wider contract.
+implementations. UltraCart later supplied a generated authoring bundle with a
+closed catalog of 563 legal element types. The bundle is source evidence for
+its generated build; the editor observation is evidence for the MELRA session.
+The counts describe different surfaces and do not need to match.
 
 Classify each claim as Verified, Contradicted, or Unknown. An
 editor canvas, CJSON file, generated VM, template parse, and public render are
@@ -61,6 +62,19 @@ parse it, and its runtime conditions must permit output.
 
 ## Hierarchy model
 
+UltraCart's supplied source corrects three concepts in the earlier model:
+
+- `body` is a leaf page-level settings widget directly under `container`. It
+  is not a layout parent.
+- `pagecontainer` is a server-rendered page-context node used in supported list
+  or group contexts. Its displayed name is not an imported-container selector.
+- `itemcontainer` is a server-rendered item-context node used in supported item
+  list contexts. Its displayed name is not an imported-container selector.
+
+Imported containers remain named reusable CJSON/VM documents composed by
+templates. Header, body, and footer are names or composition roles, not special
+widget types.
+
 The selected parent controls the available child palette. Section, Row, and
 Column are a common editorial grammar, not a universal creation chain.
 
@@ -83,8 +97,10 @@ are still `Unknown` until mapped through the hierarchy path.
 
 Modal and Sidepanel had the same observed layout-child palette: Absolute Wall,
 Aligner, Flex, Masonry Wall, Panel, Row, Table, Accordion, Slider, Tabs, Modal,
-and Sidepanel. This proves palette availability only. It does not prove that
-all placements serialize, persist, or render equivalently.
+and Sidepanel. The supplied element documentation describes a narrower Row
+child rule for these widgets. This is a source/editor discrepancy. Its current
+status is `Unknown` until a versioned placement and save/reload test resolves
+the behavior of the MELRA editor.
 
 The settings sidebar exposes a mechanically discoverable metadata contract.
 Each serializable control is a descendant of `.page-editor-sidebar` with a

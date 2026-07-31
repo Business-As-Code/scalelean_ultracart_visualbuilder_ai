@@ -2,10 +2,12 @@
 
 ## Current boundary
 
-The owner authorized a new MELRA demo-only learning program under Linear
-SL-53. The Home testbed is its only mutable shared surface. Parallel browser
-probes on item, group, and ordinary-page routes are read-only until their
-separate work orders become the active writer.
+All StoreFront, browser, and FTP work is paused while the UltraCart-supplied
+563-element authoring bundle is ingested and the plan is reconciled. Do not
+resume the Home writer or any parallel route probe until the source-first plan
+resume gate passes.
+
+See [Source-first Visual Builder learning plan](../source-first-learning-plan.md).
 
 ## Current state
 
@@ -44,6 +46,11 @@ recorded instead of inferring it.
 
 ## Open gates
 
+- Complete the private source registry and source/editor discrepancy queue.
+- Correct Body, Page Container, and Item Container semantics in all current
+  reference material.
+- Repair the missing imported `body.vm` reference before any new hierarchy
+  experiment.
 - Create the reusable imported `body` container and its paired generated
   artifact through the File Manager. The browser-native filename prompt has
   repeatedly blocked readback, so creation is not yet Verified.
