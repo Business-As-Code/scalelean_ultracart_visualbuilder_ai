@@ -1,0 +1,18 @@
+# Local credentials and connection configuration
+.env
+.env.*
+!.env.example
+*.duck
+
+# Private storefront evidence. Store approved captures in the governed shelf.
+private/
+snapshots/
+downloads/
+screenshots/
+artifacts/
+
+# Python and editor output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store

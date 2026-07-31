@@ -1,0 +1,4 @@
+interface:
+  display_name: "UltraCart Visual Builder Lab"
+  short_description: "Build and verify approved Visual Builder layouts"
+  default_prompt: "Use the UltraCart Visual Builder lab to reconstruct an approved test-store design with hierarchy-first editing, session checkpoints, private CJSON and VM evidence, and public-route verification."
