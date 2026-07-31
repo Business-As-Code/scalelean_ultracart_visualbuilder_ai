@@ -2,7 +2,7 @@
 
 ## Governing context
 
-- BAC goal: [G21](https://github.com/Business-As-Code/bac/blob/main/goals/g21-ultracart-visual-builder-capability.md)
+- BAC goal: [G23](https://github.com/Business-As-Code/bac/blob/main/goals/g23-ultracart-example-to-site-capability.md)
 - BAC project: [UltraCart Visual Builder skill and learning lab](https://github.com/Business-As-Code/bac/blob/main/projects/ultracart-visual-builder-skill-lab.md)
 - Controlling work order: [SL-53](https://linear.app/scale-lean/issue/SL-53/example-to-ultracart-agent-system-and-melra-benchmark)
 
