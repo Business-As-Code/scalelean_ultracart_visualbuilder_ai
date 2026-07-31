@@ -6,8 +6,8 @@ Date: 2026-07-31.
 
 One owner-authorized hierarchy experiment in the reference test StoreFront
 Home page Visual Builder. The scope was limited to one new direct Section
-inside `container-header`. No child was added to that Section. No file-transfer
-or source-artifact action occurred.
+inside `container-header`, then one conventional structural branch inside that
+Section. No file-transfer or source-artifact action occurred.
 
 ## Verified editor behavior
 
@@ -21,10 +21,20 @@ or source-artifact action occurred.
 4. The new node was a direct child of `container-header`, not a descendant of
    an existing Section, Header, Mobile Side Menu, Cart Snapshot Sidepanel, or
    Language Picker Modal.
-5. The editor showed an empty Section with an `ADD NEW ELEMENT` affordance.
-   That control was not used. Its allowed child palette is still `Unknown`.
-6. Visible save showed both the saving state and `Containers saved.`. A reload
-   of the editor retained the Section as the seventh direct Header child.
+5. The Section's parent-aware palette exposed 17 visible categories. Its Grid
+   category exposed: Absolute Wall, Checkout Condition, Flex, Masonry Wall,
+   Page Container, Panel, Row, Section, and Table.
+6. Selecting Row opened a width picker. Selecting the full-width layout
+   created a Row and its required one full-width Column in one action.
+7. The Row's Column then exposed a broader parent-aware palette. Its Content
+   category exposed 21 choices, including Headline, Image, Text, and Text
+   Block.
+8. The probe added a Headline, Text Block, and Image beneath that Column. The
+   saved parent chain is `Header container > Section > Row > Column > leaves`.
+   The Image was added with its default editor state only. No asset was
+   selected or uploaded.
+9. Visible save showed both the saving state and `Containers saved.`. A reload
+   retained the complete branch and every verified parent relationship.
 
 ## DOM and console observations
 
@@ -37,13 +47,15 @@ or source-artifact action occurred.
 
 ## Proof boundary
 
-This proves editor hierarchy persistence for one Section insertion on the
-observed Visual Builder version. It does not prove a universal container-child
-schema, CJSON-to-VM causality, non-editor public rendering, responsive layout,
-or any allowed Section child type.
+This proves editor hierarchy persistence for one normal structural branch on
+the observed Visual Builder version. It demonstrates the mapping method: the
+selected parent determines its visible direct-child palette. It does not prove
+a universal container-child schema, CJSON-to-VM causality, non-editor public
+rendering, responsive layout, or behavior of the other types exposed in either
+palette.
 
 ## Current decision
 
-The saved empty Section remains on the reference Header. It visibly adds a
-blank editor-region band. Retain or roll it back only under the next explicit
-owner instruction.
+The saved Section now contains a default Row, Column, Headline, Text Block,
+and Image. It visibly adds an editor-region band. Retain or roll it back only
+under the next explicit owner instruction.

@@ -67,8 +67,10 @@ Column are a common editorial grammar, not a universal creation chain.
 On the observed reference Header container, the Grid palette offered only
 Checkout Condition, Page Container, and Section as direct choices. Adding a
 Section appended a new direct child after the existing Section, Sidepanel, and
-Modal siblings. Treat this as a parent-aware, version-specific observation.
-The new Section's permitted child palette is still Unknown.
+Modal siblings. That Section exposed 17 visible parent-aware palette
+categories. Its Grid category included Row. Selecting a full-width Row created
+a required Column. The Column accepted Headline, Text Block, and Image leaves.
+Treat this as version-specific editor evidence, not a universal schema.
 
 Use these rules:
 

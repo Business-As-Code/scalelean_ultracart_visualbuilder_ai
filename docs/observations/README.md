@@ -11,7 +11,7 @@ saved. Its editor dirty state is Unknown. Inspect it before any Shop action.
 
 | Surface | State | Source and public proof | Rollback | Authority | Authoritative record |
 | --- | --- | --- | --- | --- | --- |
-| Header container Section probe | Saved direct-child insertion | Editor hierarchy, save confirmation, and editor reload | Pending owner decision | User instruction; work order not recorded | [Header Section probe](2026-07-31-header-container-section-probe.md) |
+| Header container Section probe | Saved structural branch | Editor hierarchy, parent-aware palettes, save confirmation, and editor reload | Pending owner decision | User instruction; work order not recorded | [Header Section probe](2026-07-31-header-container-section-probe.md) |
 | Shared header | Accepted saved test state | Yes | No causal rollback sequence | Work order not recorded in this repository | [Shared header](2026-07-31-clinical-effects-shared-header.md) |
 | Joint Support product | Accepted saved test state | Yes | No causal rollback sequence | Work order not recorded in this repository | [Joint Support offer](2026-07-31-joint-support-offer-refinement.md) |
 | Shop collection probe | Temporary saved state | Yes | Required and incomplete | Work order not recorded in this repository | [Collection Tab probe](2026-07-31-collection-tab-probe-pending-rollback.md) |
@@ -46,8 +46,8 @@ recorded instead of inferring it.
 
 - Inspect the current collection editor hierarchy and dirty state before any
   reload.
-- Decide whether to retain or roll back the empty Header Section probe.
-- Inspect the new Section's parent-aware child palette without adding a child.
+- Decide whether to retain or roll back the Header Section structural probe.
+- Map another Section palette category, then record only the confirmed direct-child choices.
 - Complete the collection-probe rollback.
 - Capture and verify rollback CJSON and VM.
 - Verify the exact two-Tab order and probe marker absence.
