@@ -64,6 +64,12 @@ parse it, and its runtime conditions must permit output.
 The selected parent controls the available child palette. Section, Row, and
 Column are a common editorial grammar, not a universal creation chain.
 
+On the observed reference Header container, the Grid palette offered only
+Checkout Condition, Page Container, and Section as direct choices. Adding a
+Section appended a new direct child after the existing Section, Sidepanel, and
+Modal siblings. Treat this as a parent-aware, version-specific observation.
+The new Section's permitted child palette is still Unknown.
+
 Use these rules:
 
 1. Reopen the hierarchy after every insertion. Add Child is a request, not

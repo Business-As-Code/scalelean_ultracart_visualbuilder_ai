@@ -1,16 +1,17 @@
 # Visual Builder observation register
 
-## Stop condition
+## Current boundary
 
-Site work is paused. The temporary collection Tab probe remains in the last
+Only the owner-authorized Header Section probe is active. All other StoreFront
+work remains paused. The temporary collection Tab probe remains in the last
 source-proven persisted state. A delete was initiated but was not confirmed or
-saved. Editor dirty state is Unknown. Do not perform another StoreFront action
-until resumption is authorized and the existing editor state is inspected.
+saved. Its editor dirty state is Unknown. Inspect it before any Shop action.
 
 ## Current state
 
 | Surface | State | Source and public proof | Rollback | Authority | Authoritative record |
 | --- | --- | --- | --- | --- | --- |
+| Header container Section probe | Saved direct-child insertion | Editor hierarchy, save confirmation, and editor reload | Pending owner decision | User instruction; work order not recorded | [Header Section probe](2026-07-31-header-container-section-probe.md) |
 | Shared header | Accepted saved test state | Yes | No causal rollback sequence | Work order not recorded in this repository | [Shared header](2026-07-31-clinical-effects-shared-header.md) |
 | Joint Support product | Accepted saved test state | Yes | No causal rollback sequence | Work order not recorded in this repository | [Joint Support offer](2026-07-31-joint-support-offer-refinement.md) |
 | Shop collection probe | Temporary saved state | Yes | Required and incomplete | Work order not recorded in this repository | [Collection Tab probe](2026-07-31-collection-tab-probe-pending-rollback.md) |
@@ -38,12 +39,15 @@ recorded instead of inferring it.
 | [Generated VM literal normalization](2026-07-31-generated-vm-literal-normalization.md) | Current compiler method note |
 | [Shared header](2026-07-31-clinical-effects-shared-header.md) | Current accepted saved state |
 | [Joint Support offer](2026-07-31-joint-support-offer-refinement.md) | Current accepted saved state |
+| [Header Section probe](2026-07-31-header-container-section-probe.md) | Current bounded hierarchy experiment |
 | [Collection Tab probe](2026-07-31-collection-tab-probe-pending-rollback.md) | Temporary state pending rollback |
 
 ## Open gates
 
 - Inspect the current collection editor hierarchy and dirty state before any
   reload.
+- Decide whether to retain or roll back the empty Header Section probe.
+- Inspect the new Section's parent-aware child palette without adding a child.
 - Complete the collection-probe rollback.
 - Capture and verify rollback CJSON and VM.
 - Verify the exact two-Tab order and probe marker absence.
