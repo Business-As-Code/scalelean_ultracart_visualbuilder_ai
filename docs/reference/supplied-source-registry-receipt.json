@@ -1,0 +1,62 @@
+{
+  "catalog": {
+    "element_count": 563,
+    "friendly_name_count": 548,
+    "setting_instance_count": 22616,
+    "unique_setting_key_count": 1937
+  },
+  "description_provenance": {
+    "generated_fallback": 18349,
+    "supplier_sidecar": 4267
+  },
+  "kind": "ultracart_visual_builder_source_registry_public_receipt",
+  "placement_child_models": {
+    "constrained_or_general": 137,
+    "contextual_or_runtime": 13,
+    "forced": 7,
+    "leaf": 378,
+    "undocumented": 28
+  },
+  "registry": {
+    "bytes": 23746064,
+    "kind": "ultracart_visual_builder_source_registry",
+    "schema_version": 1,
+    "sha256": "938f9db64c277c1552e54a89de360081f75215cb931107ee9e1144990056a9b6"
+  },
+  "schema_version": 1,
+  "source_anomalies": {
+    "conditional_reference_unresolved": 375,
+    "default_type_mismatch": 25,
+    "description_without_active_setting": 4,
+    "enum_default_mismatch": 37,
+    "unmapped_setting_type": 189
+  },
+  "source_hash_coverage": {
+    "descriptions_sha256": 560,
+    "document_sha256": 563,
+    "schema_sha256": 563
+  },
+  "source_integrity": {
+    "file_count": 1703,
+    "manifest_sha256": "82bd0a9076b116213456177cd0ff345a3f665f5d52cbc271514624ba6c429b0e",
+    "status": "verified",
+    "total_bytes": 13758675
+  },
+  "static_validator_scope": {
+    "does_not_prove": [
+      "editor_save_reload",
+      "generated_vm",
+      "non_editor_render",
+      "responsive_render",
+      "native_behavior"
+    ],
+    "proves": "source-shape, type, setting, reference, and placement checks"
+  },
+  "supplied_examples": {
+    "error_count": 0,
+    "example_count": 4,
+    "valid_count": 4,
+    "warning_count": 104
+  },
+  "unresolved_placement_token_count": 32
+}

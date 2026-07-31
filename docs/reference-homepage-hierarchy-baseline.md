@@ -45,5 +45,5 @@ used.
 
 Create a private FTPS manifest that captures only the approved StoreFront
 subtree. Match candidate CJSON and VM file names to these observed container
-names. Treat each match as a hypothesis until a controlled before-and-after
-test is approved and verified.
+names. Classify each match as Unknown until a controlled before-and-after test
+is approved and verified.

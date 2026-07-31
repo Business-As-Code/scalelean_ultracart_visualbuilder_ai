@@ -47,6 +47,57 @@ Read `references/composition-and-shared-structures.md` before changing a
 header, footer, collection, item page, or named container. Verify the selected
 page template's explicit container composition.
 
+## Supplied-source planning gate
+
+Use the private normalized UltraCart registry before opening the editor for an
+authoring task. The registry is the closed source catalog for type names,
+setting keys, declared value shapes, forced children, and documented placement.
+It is not proof that a merchant, route, or current editor exposes an element.
+
+1. Confirm that `UVB_PRIVATE_ARTIFACT_ROOT` names the approved private shelf.
+2. Audit the current packet, intake manifest, and registry:
+
+   ~~~text
+   python3 scripts/audit_supplied_source_registry.py \
+     <private-bundle-root> \
+     <private-intake-manifest.json> \
+     <private-registry.json> \
+     --output <private-audit-receipt.json>
+   ~~~
+
+3. Search the registry, then inspect each selected type and its settings:
+
+   ~~~text
+   python3 scripts/query_supplied_source_registry.py \
+     <private-registry.json> search <term>
+   python3 scripts/query_supplied_source_registry.py \
+     <private-registry.json> element <type>
+   python3 scripts/query_supplied_source_registry.py \
+     <private-registry.json> setting <type> <key>
+   ~~~
+
+4. Query both candidate directions before authoring an edge:
+
+   ~~~text
+   python3 scripts/query_supplied_source_registry.py \
+     <private-registry.json> children <parent-type>
+   python3 scripts/query_supplied_source_registry.py \
+     <private-registry.json> parents <child-type>
+   ~~~
+
+5. Author only bilaterally supported edges. A unilateral, contradicted,
+   unknown, or denied result requires editor reconciliation. Forced-child rules
+   still apply.
+6. Validate each proposed CJSON tree in `authoring` mode. Do not carry forward
+   transient keys, legacy keys, unresolved references, unverified dynamic
+   merchant values, or unsupported responsive wrappers.
+7. Treat a static pass as permission to test, not completion. The result names
+   the required live evidence: editor save and reload, generated VM, non-editor
+   render, responsive render, and native behavior.
+
+Read `docs/supplied-source-registry.md` for provenance, current counts, known
+source anomalies, and the public/private boundary.
+
 Assign one browser editor writer. Other agents may inspect the reference,
 public routes, shared structures, artifacts, or verification results, but they
 must not edit or save the same page during the writer's save window.
