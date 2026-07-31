@@ -36,11 +36,15 @@ Section. No file-transfer or source-artifact action occurred.
 9. The Section also accepted Panel as a direct sibling of the Row. The Panel
    exposed a broader palette with 32 visible categories and accepted Headline
    as a direct child.
-10. The hierarchy-panel node action menu provided the reliable placement flow:
+10. The Section accepted Accordion, Flex, and Table as further direct siblings.
+    Accordion's empty state exposes only `ADD NEW ACCORDION ITEM`, which is
+    evidence of a forced child type. Flex and Table expose a generic add
+    affordance; their current exact child palettes remain `Unknown`.
+11. The hierarchy-panel node action menu provided the reliable placement flow:
     select `add`, choose `Add Child`, then use the resulting parent-aware
     palette. Canvas hover controls did not reliably open the palette after a
     saved reload.
-11. Visible save showed both the saving state and `Containers saved.`. A reload
+12. Visible save showed both the saving state and `Containers saved.`. A reload
     retained the complete branch and every verified parent relationship.
 
 ## DOM and console observations
@@ -64,5 +68,6 @@ palette.
 ## Current decision
 
 The saved Section now contains a default Row, Column, Headline, Text Block,
-Image, Panel, and Panel Headline. It visibly adds an editor-region band.
-Retain or roll it back only under the next explicit owner instruction.
+Image, Panel, Panel Headline, Accordion, Flex, and Table. It visibly adds an
+editor-region band. Retain or roll it back only under the next explicit owner
+instruction.

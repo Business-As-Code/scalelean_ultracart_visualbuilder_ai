@@ -75,6 +75,11 @@ Headline leaf. The hierarchy panel offered the reliable placement path:
 `add > Add Child > parent-aware palette`. Treat this as version-specific editor
 evidence, not a universal schema.
 
+The same Section accepted Accordion, Flex, and Table as direct siblings. The
+empty Accordion presents only an Accordion Item creation affordance. Flex and
+Table present generic add affordances, but their exact current child palettes
+are still `Unknown` until mapped through the hierarchy path.
+
 Use these rules:
 
 1. Reopen the hierarchy after every insertion. Add Child is a request, not
