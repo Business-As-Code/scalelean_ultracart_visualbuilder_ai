@@ -70,7 +70,10 @@ Section appended a new direct child after the existing Section, Sidepanel, and
 Modal siblings. That Section exposed 17 visible parent-aware palette
 categories. Its Grid category included Row. Selecting a full-width Row created
 a required Column. The Column accepted Headline, Text Block, and Image leaves.
-Treat this as version-specific editor evidence, not a universal schema.
+The Section also accepted Panel as a sibling of the Row, and Panel accepted a
+Headline leaf. The hierarchy panel offered the reliable placement path:
+`add > Add Child > parent-aware palette`. Treat this as version-specific editor
+evidence, not a universal schema.
 
 Use these rules:
 

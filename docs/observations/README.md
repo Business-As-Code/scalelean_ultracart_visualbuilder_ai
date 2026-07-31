@@ -47,7 +47,7 @@ recorded instead of inferring it.
 - Inspect the current collection editor hierarchy and dirty state before any
   reload.
 - Decide whether to retain or roll back the Header Section structural probe.
-- Map another Section palette category, then record only the confirmed direct-child choices.
+- Map another Section palette category, then record only the confirmed direct-child choices. Use hierarchy `add > Add Child` when canvas controls are unavailable.
 - Complete the collection-probe rollback.
 - Capture and verify rollback CJSON and VM.
 - Verify the exact two-Tab order and probe marker absence.
