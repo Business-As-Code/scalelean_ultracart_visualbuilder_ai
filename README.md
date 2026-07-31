@@ -18,13 +18,27 @@ rollback, and verifier.
 1. Read [AGENTS.md](AGENTS.md).
 2. Read [the skill](skills/ultracart-visual-builder-lab/SKILL.md).
 3. Read [the consolidated system model](docs/visual-builder-system-model.md)
-   and [current observation register](docs/observations/README.md).
+   and [the current observation register](docs/observations/README.md). For authoring,
+   also read [the supplied-source registry workflow](docs/supplied-source-registry.md).
 4. Read [the read-only runbook](runbooks/read-only-discovery.md) for discovery
    or the skill's design-intake contract for an approved reconstruction.
 5. Copy `.env.example` to `.env` locally and fill only the approved
    connection values. The `.env` file is ignored by Git.
 6. Do not connect a file-transfer client until the work order records the verified
    protocol, host, permitted root, and server-side read-only access.
+
+## Source-first authoring
+
+The UltraCart-supplied packet stays outside Git. Normalize it into a private
+registry before planning a hierarchy. The current verified registry covers 563
+element types and 22,616 setting instances. It also preserves source conflicts
+instead of silently resolving them.
+
+Use `scripts/query_supplied_source_registry.py` to select types, inspect
+settings, and check candidate parent-child relationships. Use
+`scripts/validate_cjson_against_registry.py` before any editor write. A static
+pass does not prove an editor save, generated VM, public render, responsive
+result, or native commerce behavior.
 
 Once the owner has approved and set a verified server public-key pin, run one
 minimal listing with `python3 scripts/probe_ftps.py`. It does not download,
@@ -203,5 +217,5 @@ it does not validate routes, comparison policy, or artifact meaning.
 ## Evidence rule
 
 An editor observation, an FTP-visible file, and a rendered page are separate
-facts. A relationship between them is a hypothesis until a separately approved
+facts. A relationship between them remains Unknown until a separately approved
 controlled test captures a before-and-after comparison.
