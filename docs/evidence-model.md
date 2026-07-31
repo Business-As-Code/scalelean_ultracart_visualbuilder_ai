@@ -6,7 +6,7 @@ identifier, observer, and one of these classifications:
 | Classification | Meaning |
 | --- | --- |
 | Verified | A controlled test directly supports the stated relationship. |
-| Hypothesis | The relationship is plausible but has not passed a controlled test. |
+| Contradicted | A controlled test disproves the stated relationship. |
 | Unknown | The current evidence cannot establish the relationship. |
 
 ## Evidence surfaces

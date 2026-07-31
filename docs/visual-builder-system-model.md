@@ -14,7 +14,7 @@ implementations. Treat widget types, settings, compiler output, runtime names,
 and internal editor objects as version-specific until the incoming UltraCart
 files establish a wider contract.
 
-Classify each claim as Verified, Hypothesis, Contradicted, or Unknown. An
+Classify each claim as Verified, Contradicted, or Unknown. An
 editor canvas, CJSON file, generated VM, template parse, and public render are
 independent evidence. Agreement on one surface does not prove another.
 
@@ -64,21 +64,37 @@ parse it, and its runtime conditions must permit output.
 The selected parent controls the available child palette. Section, Row, and
 Column are a common editorial grammar, not a universal creation chain.
 
-On the observed reference Header container, the Grid palette offered only
-Checkout Condition, Page Container, and Section as direct choices. Adding a
-Section appended a new direct child after the existing Section, Sidepanel, and
-Modal siblings. That Section exposed 17 visible parent-aware palette
-categories. Its Grid category included Row. Selecting a full-width Row created
-a required Column. The Column accepted Headline, Text Block, and Image leaves.
-The Section also accepted Panel as a sibling of the Row, and Panel accepted a
-Headline leaf. The hierarchy panel offered the reliable placement path:
-`add > Add Child > parent-aware palette`. Treat this as version-specific editor
-evidence, not a universal schema.
+The first probe used the imported container named Header. Its name is not a
+widget type or a special hierarchy rule. A direct live palette inspection
+established that a container root offers Section, Page Container, and selected
+special-purpose widgets, but not generic Row, Panel, Flex, or Table. The
+basic grid path is therefore `Container > Section > Row > Column`, not
+`Container > Row`. Selecting a full-width Row created a required Column. The
+Column accepted Headline, Text Block, and Image leaves. The Section also
+accepted Panel, Flex, Absolute Wall, Masonry Wall, Table, Accordion, and
+Slider as direct children. The hierarchy panel offered the reliable placement
+path: `add > Add Child > parent-aware palette`. Treat this as version-specific
+editor evidence, not a universal schema.
 
 The same Section accepted Accordion, Flex, and Table as direct siblings. The
 empty Accordion presents only an Accordion Item creation affordance. Flex and
 Table present generic add affordances, but their exact current child palettes
 are still `Unknown` until mapped through the hierarchy path.
+
+Modal and Sidepanel had the same observed layout-child palette: Absolute Wall,
+Aligner, Flex, Masonry Wall, Panel, Row, Table, Accordion, Slider, Tabs, Modal,
+and Sidepanel. This proves palette availability only. It does not prove that
+all placements serialize, persist, or render equivalently.
+
+The settings sidebar exposes a mechanically discoverable metadata contract.
+Each serializable control is a descendant of `.page-editor-sidebar` with a
+`data-setting-key`. It may also expose `data-default-value`,
+`data-setting-breakpoint`, `data-setting-refresh-settings`,
+`data-setting-render-parent`, and `data-setting-reset-runtime`. The enclosing
+control class identifies its UI type. Conditional settings use
+`.setting-check-conditional` with declarative key and value attributes. These
+DOM fields are a verified inventory mechanism, not yet proof of every setting's
+save, runtime, or compiler effect.
 
 Use these rules:
 

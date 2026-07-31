@@ -2,16 +2,16 @@
 
 ## Current boundary
 
-Only the owner-authorized Header Section probe is active. All other StoreFront
-work remains paused. The temporary collection Tab probe remains in the last
-source-proven persisted state. A delete was initiated but was not confirmed or
-saved. Its editor dirty state is Unknown. Inspect it before any Shop action.
+The owner authorized a new MELRA demo-only learning program under Linear
+SL-53. The Home testbed is its only mutable shared surface. Parallel browser
+probes on item, group, and ordinary-page routes are read-only until their
+separate work orders become the active writer.
 
 ## Current state
 
 | Surface | State | Source and public proof | Rollback | Authority | Authoritative record |
 | --- | --- | --- | --- | --- | --- |
-| Header container Section probe | Saved structural branch | Editor hierarchy, parent-aware palettes, save confirmation, and editor reload | Pending owner decision | User instruction; work order not recorded | [Header Section probe](2026-07-31-header-container-section-probe.md) |
+| Layout and settings discovery | Read-only evidence | Parent-aware palettes and settings-sidebar DOM | Not applicable | SL-53 | [2026-07-31 hierarchy discovery](2026-07-31-hierarchy-discovery.md) |
 | Shared header | Accepted saved test state | Yes | No causal rollback sequence | Work order not recorded in this repository | [Shared header](2026-07-31-clinical-effects-shared-header.md) |
 | Joint Support product | Accepted saved test state | Yes | No causal rollback sequence | Work order not recorded in this repository | [Joint Support offer](2026-07-31-joint-support-offer-refinement.md) |
 | Shop collection probe | Temporary saved state | Yes | Required and incomplete | Work order not recorded in this repository | [Collection Tab probe](2026-07-31-collection-tab-probe-pending-rollback.md) |
