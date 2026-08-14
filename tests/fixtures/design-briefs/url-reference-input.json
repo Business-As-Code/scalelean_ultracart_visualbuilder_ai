@@ -1,0 +1,7 @@
+{
+  "reference_type": "url",
+  "reference_url": "https://example-store.test/",
+  "work_order": "SL-148",
+  "description": "Synthetic URL reference for testing design brief generation",
+  "merchant_neutral": true
+}

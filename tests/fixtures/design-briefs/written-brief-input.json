@@ -1,0 +1,149 @@
+{
+  "route_context": {
+    "page_class": "item",
+    "editor_route": "https://example-store.test/admin/storefront/visual-builder?page=item&editMode=true",
+    "public_route": "https://example-store.test/products/example-product",
+    "route_agreement_verified": true
+  },
+  "design_inventory": {
+    "responsive_intent": "desktop-first",
+    "semantic_sections": [
+      {
+        "section_id": "section-header",
+        "name": "header",
+        "order": 0,
+        "ownership": "shared",
+        "content_source": "static-editorial",
+        "required_copy": {
+          "text": "Example Store",
+          "preserve_punctuation": true,
+          "preserve_capitalization": true,
+          "preserve_line_breaks": false,
+          "status": "exact"
+        },
+        "required_assets": [
+          {
+            "asset_id": "logo-main",
+            "source_url": null,
+            "alt_text": "Example Store Logo",
+            "intended_dimensions": {
+              "width": 200,
+              "height": 60
+            },
+            "crop_region": null,
+            "provenance": "synthetic"
+          }
+        ],
+        "typography": {
+          "font_family": "Arial, sans-serif",
+          "weight": 700,
+          "size": "24px",
+          "line_height": 1.2,
+          "letter_spacing": null,
+          "color": "#000000",
+          "alignment": "center",
+          "status": "specified"
+        },
+        "surface": {
+          "background_color": "#ffffff",
+          "background_image": null,
+          "border": null,
+          "border_radius": null,
+          "shadow": null,
+          "status": "specified"
+        },
+        "geometry": {
+          "container_width": "100%",
+          "column_ratio": null,
+          "element_dimensions": null,
+          "spacing": {
+            "gap": null,
+            "padding": "20px",
+            "margin": null
+          },
+          "status": "measured"
+        },
+        "behavior": {
+          "interaction_type": "link",
+          "targets": ["/"],
+          "form_ownership": null,
+          "conditional_states": []
+        },
+        "reusable_container_candidate": true,
+        "page_specific_regions": []
+      },
+      {
+        "section_id": "section-product-detail",
+        "name": "product-detail",
+        "order": 1,
+        "ownership": "page-local",
+        "content_source": "dynamic-ultracart",
+        "required_copy": null,
+        "required_assets": [],
+        "typography": null,
+        "surface": null,
+        "geometry": null,
+        "behavior": {
+          "interaction_type": "form",
+          "targets": [],
+          "form_ownership": "ItemForm",
+          "conditional_states": ["in-stock", "out-of-stock"]
+        },
+        "reusable_container_candidate": false,
+        "page_specific_regions": ["product-media", "product-info", "add-to-cart"]
+      },
+      {
+        "section_id": "section-footer",
+        "name": "footer",
+        "order": 2,
+        "ownership": "shared",
+        "content_source": "static-editorial",
+        "required_copy": {
+          "text": "© 2026 Example Store. All rights reserved.",
+          "preserve_punctuation": true,
+          "preserve_capitalization": true,
+          "preserve_line_breaks": false,
+          "status": "exact"
+        },
+        "required_assets": [],
+        "typography": {
+          "font_family": "Arial, sans-serif",
+          "weight": 400,
+          "size": "14px",
+          "line_height": 1.5,
+          "letter_spacing": null,
+          "color": "#666666",
+          "alignment": "center",
+          "status": "specified"
+        },
+        "surface": {
+          "background_color": "#f5f5f5",
+          "background_image": null,
+          "border": "1px solid #dddddd",
+          "border_radius": null,
+          "shadow": null,
+          "status": "specified"
+        },
+        "geometry": {
+          "container_width": "100%",
+          "column_ratio": null,
+          "element_dimensions": null,
+          "spacing": {
+            "gap": null,
+            "padding": "40px 20px",
+            "margin": null
+          },
+          "status": "measured"
+        },
+        "behavior": {
+          "interaction_type": "none",
+          "targets": [],
+          "form_ownership": null,
+          "conditional_states": []
+        },
+        "reusable_container_candidate": true,
+        "page_specific_regions": []
+      }
+    ]
+  }
+}
