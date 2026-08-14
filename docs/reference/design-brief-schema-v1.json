@@ -1,0 +1,594 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://scale-lean.com/schemas/ultracart/design-brief-v1.json",
+  "title": "UltraCart Visual Builder Design Brief",
+  "description": "Machine-readable design brief schema for UltraCart Visual Builder reconstruction",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "brief_id",
+    "created_at",
+    "authority",
+    "route_context",
+    "acceptance_viewports",
+    "design_inventory",
+    "native_behavior_checklist",
+    "reference_evidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0",
+      "description": "Design brief schema version"
+    },
+    "brief_id": {
+      "type": "string",
+      "pattern": "^brief-[a-z0-9-]+$",
+      "description": "Unique identifier for this design brief"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when brief was created"
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "controlling_work_order",
+        "test_storefront",
+        "allowed_writes",
+        "forbidden_writes",
+        "rollback_owner",
+        "acceptance_owner"
+      ],
+      "properties": {
+        "controlling_work_order": {
+          "type": "string",
+          "description": "Issue ID and approved mutation (e.g., SL-148)"
+        },
+        "test_storefront": {
+          "type": "object",
+          "required": ["merchant_id", "storefront_id"],
+          "properties": {
+            "merchant_id": {
+              "type": "string",
+              "description": "Merchant identifier (redacted for synthetic examples)"
+            },
+            "storefront_id": {
+              "type": "string",
+              "description": "StoreFront identifier (redacted for synthetic examples)"
+            }
+          }
+        },
+        "allowed_writes": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Named Visual Builder changes allowed by work order"
+        },
+        "forbidden_writes": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Operations explicitly forbidden (catalog, FTP, etc.)"
+        },
+        "rollback_owner": {
+          "type": "string",
+          "description": "Named operator responsible for rollback"
+        },
+        "acceptance_owner": {
+          "type": "string",
+          "description": "Named verifier for acceptance criteria"
+        }
+      }
+    },
+    "route_context": {
+      "type": "object",
+      "required": ["page_class", "editor_route", "public_route"],
+      "properties": {
+        "page_class": {
+          "type": "string",
+          "enum": ["home", "content", "collection", "item", "other"],
+          "description": "Page type classification"
+        },
+        "editor_route": {
+          "type": "string",
+          "description": "Exact Visual Builder editor URL with editMode state"
+        },
+        "public_route": {
+          "type": "string",
+          "description": "Exact non-editor public URL"
+        },
+        "route_agreement_verified": {
+          "type": "boolean",
+          "description": "Whether editor URL, canvas, hierarchy, and public route agree"
+        }
+      }
+    },
+    "acceptance_viewports": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "width", "height", "device_scale", "in_scope"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Viewport identifier (e.g., desktop-1920, mobile-375)"
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Viewport width in CSS pixels"
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Viewport height in CSS pixels"
+          },
+          "device_scale": {
+            "type": "number",
+            "minimum": 0.1,
+            "description": "Device pixel ratio"
+          },
+          "in_scope": {
+            "type": "boolean",
+            "description": "Whether this viewport is included in acceptance testing"
+          },
+          "browser": {
+            "type": "string",
+            "description": "Browser identifier (e.g., Chrome 120, Firefox 121)"
+          },
+          "zoom_level": {
+            "type": "number",
+            "description": "Browser zoom percentage (100 = 100%)"
+          },
+          "requires_scroll": {
+            "type": "boolean",
+            "description": "Whether lazy-loaded content requires scrolling before measurement"
+          },
+          "comparison_thresholds": {
+            "type": "object",
+            "properties": {
+              "pixel_delta_threshold": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 255
+              },
+              "max_normalized_mae": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "max_normalized_rmse": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "max_channel_delta": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 255
+              },
+              "max_percent_pixels_over_threshold": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          },
+          "mask_rectangles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["x", "y", "width", "height", "reason"],
+              "properties": {
+                "x": {"type": "integer", "minimum": 0},
+                "y": {"type": "integer", "minimum": 0},
+                "width": {"type": "integer", "minimum": 1},
+                "height": {"type": "integer", "minimum": 1},
+                "reason": {
+                  "type": "string",
+                  "description": "Declared reason for masking (dynamic region only)"
+                }
+              }
+            },
+            "description": "Zero-based mask rectangles for declared dynamic regions"
+          }
+        }
+      }
+    },
+    "design_inventory": {
+      "type": "object",
+      "required": ["semantic_sections"],
+      "properties": {
+        "responsive_intent": {
+          "type": "string",
+          "enum": ["desktop-only", "mobile-first", "desktop-first", "adaptive", "Unknown"],
+          "description": "Overall responsive design strategy"
+        },
+        "semantic_sections": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["section_id", "name", "order", "ownership", "content_source"],
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "pattern": "^section-[a-z0-9-]+$"
+              },
+              "name": {
+                "type": "string",
+                "description": "Human-readable section name (e.g., header, hero, features, footer)"
+              },
+              "order": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Top-to-bottom visual order (0 = first)"
+              },
+              "ownership": {
+                "type": "string",
+                "enum": ["shared", "page-local", "Unknown"],
+                "description": "Whether structure is shared across StoreFront or page-specific"
+              },
+              "content_source": {
+                "type": "string",
+                "enum": ["static-editorial", "dynamic-ultracart", "mixed", "Unknown"],
+                "description": "Source of section content"
+              },
+              "required_copy": {
+                "type": ["object", "null"],
+                "properties": {
+                  "text": {"type": "string"},
+                  "preserve_punctuation": {"type": "boolean"},
+                  "preserve_capitalization": {"type": "boolean"},
+                  "preserve_line_breaks": {"type": "boolean"},
+                  "status": {
+                    "type": "string",
+                    "enum": ["exact", "approximate", "Unknown"]
+                  }
+                }
+              },
+              "required_assets": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["asset_id", "provenance"],
+                  "properties": {
+                    "asset_id": {"type": "string"},
+                    "source_url": {"type": ["string", "null"]},
+                    "alt_text": {"type": ["string", "null"]},
+                    "intended_dimensions": {
+                      "type": ["object", "null"],
+                      "properties": {
+                        "width": {"type": "integer"},
+                        "height": {"type": "integer"}
+                      }
+                    },
+                    "crop_region": {"type": ["object", "null"]},
+                    "provenance": {
+                      "type": "string",
+                      "enum": ["reference-extracted", "approved-substitute", "synthetic", "Unknown"]
+                    }
+                  }
+                }
+              },
+              "typography": {
+                "type": ["object", "null"],
+                "properties": {
+                  "font_family": {"type": ["string", "null"]},
+                  "weight": {"type": ["string", "integer", "null"]},
+                  "size": {"type": ["string", "null"]},
+                  "line_height": {"type": ["string", "number", "null"]},
+                  "letter_spacing": {"type": ["string", "number", "null"]},
+                  "color": {"type": ["string", "null"]},
+                  "alignment": {"type": ["string", "null"]},
+                  "status": {
+                    "type": "string",
+                    "enum": ["specified", "inferred", "Unknown"]
+                  }
+                }
+              },
+              "surface": {
+                "type": ["object", "null"],
+                "properties": {
+                  "background_color": {"type": ["string", "null"]},
+                  "background_image": {"type": ["string", "null"]},
+                  "border": {"type": ["string", "null"]},
+                  "border_radius": {"type": ["string", "null"]},
+                  "shadow": {"type": ["string", "null"]},
+                  "status": {
+                    "type": "string",
+                    "enum": ["specified", "inferred", "Unknown"]
+                  }
+                }
+              },
+              "geometry": {
+                "type": ["object", "null"],
+                "properties": {
+                  "container_width": {"type": ["string", "null"]},
+                  "column_ratio": {"type": ["string", "null"]},
+                  "element_dimensions": {
+                    "type": ["object", "null"],
+                    "properties": {
+                      "width": {"type": ["string", "null"]},
+                      "height": {"type": ["string", "null"]}
+                    }
+                  },
+                  "spacing": {
+                    "type": ["object", "null"],
+                    "properties": {
+                      "gap": {"type": ["string", "null"]},
+                      "padding": {"type": ["string", "null"]},
+                      "margin": {"type": ["string", "null"]}
+                    }
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["measured", "estimated", "Unknown"]
+                  }
+                }
+              },
+              "behavior": {
+                "type": ["object", "null"],
+                "properties": {
+                  "interaction_type": {
+                    "type": "string",
+                    "enum": ["link", "form", "selection", "conditional", "none", "Unknown"]
+                  },
+                  "targets": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                  },
+                  "form_ownership": {"type": ["string", "null"]},
+                  "conditional_states": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                  }
+                }
+              },
+              "reusable_container_candidate": {
+                "type": "boolean",
+                "description": "Whether this section is a candidate for reusable container extraction"
+              },
+              "page_specific_regions": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "Named regions within this section that are page-specific"
+              }
+            }
+          }
+        }
+      }
+    },
+    "native_behavior_checklist": {
+      "type": "object",
+      "required": ["controls_to_preserve", "verification_status"],
+      "properties": {
+        "controls_to_preserve": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["control_id", "control_type", "hierarchy_branch"],
+            "properties": {
+              "control_id": {"type": "string"},
+              "control_type": {
+                "type": "string",
+                "enum": [
+                  "product-media",
+                  "product-title",
+                  "product-reviews",
+                  "product-price",
+                  "stock-state",
+                  "subscription-schedule",
+                  "quantity-selector",
+                  "add-to-cart",
+                  "structured-data-wrapper",
+                  "conditional-purchase",
+                  "search",
+                  "navigation",
+                  "cart",
+                  "checkout-link",
+                  "form-input",
+                  "other"
+                ]
+              },
+              "hierarchy_branch": {
+                "type": "string",
+                "description": "Minimal containing branch that preserves structure (e.g., ItemForm row)"
+              },
+              "must_preserve_ancestors": {
+                "type": "boolean",
+                "description": "Whether ancestor structure must be preserved"
+              },
+              "conditional_states": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "state": {"type": "string"},
+                    "verification_status": {
+                      "type": "string",
+                      "enum": ["Verified", "Unknown", "not-tested"]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "verification_status": {
+          "type": "string",
+          "enum": ["Verified", "Contradicted", "Unknown"],
+          "description": "Overall verification status of native behavior preservation"
+        },
+        "unexercised_states": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Native behaviors present but not tested (e.g., out-of-stock, Notify Me)"
+        }
+      }
+    },
+    "hierarchy_plan": {
+      "type": ["object", "null"],
+      "properties": {
+        "planned_nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["node_id", "region", "parent", "node_type", "purpose", "sibling_position"],
+            "properties": {
+              "node_id": {"type": "string"},
+              "region": {"type": "string"},
+              "parent": {"type": "string"},
+              "node_type": {"type": "string"},
+              "purpose": {"type": "string"},
+              "sibling_position": {"type": "integer", "minimum": 0},
+              "responsive_values": {
+                "type": ["object", "null"],
+                "additionalProperties": true
+              },
+              "placement_verified": {
+                "type": "string",
+                "enum": ["Verified", "Unknown", "unsupported"],
+                "description": "Whether parent palette supports this child type"
+              }
+            }
+          }
+        },
+        "approval_status": {
+          "type": "string",
+          "enum": ["approved", "draft", "Unknown"]
+        }
+      }
+    },
+    "acceptance_criteria": {
+      "type": "object",
+      "required": ["zero_tolerance_checks"],
+      "properties": {
+        "zero_tolerance_checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "exact-copy",
+              "exact-punctuation",
+              "exact-capitalization",
+              "required-asset-identity",
+              "required-asset-alt-text",
+              "required-node-parentage",
+              "required-sibling-order",
+              "required-dynamic-vs-static",
+              "required-native-control-presence",
+              "required-native-control-action",
+              "exact-colors-when-specified",
+              "required-link-targets",
+              "required-form-ownership"
+            ]
+          }
+        },
+        "numeric_tolerances": {
+          "type": "object",
+          "properties": {
+            "font_size": {"type": ["number", "null"]},
+            "line_height": {"type": ["number", "null"]},
+            "element_bounds": {"type": ["number", "null"]},
+            "gaps": {"type": ["number", "null"]},
+            "padding": {"type": ["number", "null"]},
+            "margin": {"type": ["number", "null"]},
+            "section_position": {"type": ["number", "null"]}
+          },
+          "description": "Numeric tolerances per property (null = no tolerance approved)"
+        },
+        "surface_requirements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "surface": {
+                "type": "string",
+                "enum": ["editor", "cjson", "velocity", "public-route"]
+              },
+              "required_checks": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "allowed_differences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["property", "reason"],
+            "properties": {
+              "property": {"type": "string"},
+              "reason": {"type": "string"},
+              "tolerance": {"type": ["number", "string", "null"]}
+            }
+          },
+          "description": "Explicitly approved differences from reference"
+        }
+      }
+    },
+    "reference_evidence": {
+      "type": "object",
+      "required": ["input_type", "extraction_method"],
+      "properties": {
+        "input_type": {
+          "type": "string",
+          "enum": ["url", "screenshot", "written-brief", "figma", "other"],
+          "description": "Type of reference input"
+        },
+        "reference_url": {"type": ["string", "null"]},
+        "reference_screenshot_hash": {"type": ["string", "null"]},
+        "reference_document_hash": {"type": ["string", "null"]},
+        "extraction_method": {
+          "type": "string",
+          "enum": ["automated", "manual", "hybrid", "Unknown"],
+          "description": "How design details were extracted from reference"
+        },
+        "extraction_timestamp": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "extraction_assumptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["assumption", "rationale"],
+            "properties": {
+              "assumption": {"type": "string"},
+              "rationale": {"type": "string"},
+              "approval_status": {
+                "type": "string",
+                "enum": ["approved", "pending", "Unknown"]
+              }
+            }
+          },
+          "description": "Explicit assumptions made during extraction"
+        },
+        "unresolved_information": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["property", "reason"],
+            "properties": {
+              "property": {"type": "string"},
+              "reason": {"type": "string"},
+              "resolution_strategy": {"type": ["string", "null"]}
+            }
+          },
+          "description": "Information that could not be determined from reference"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "brief_format": {
+          "type": "string",
+          "enum": ["machine-readable", "human-readable", "hybrid"]
+        },
+        "generator": {"type": "string"},
+        "generator_version": {"type": "string"}
+      }
+    }
+  }
+}
